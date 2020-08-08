@@ -4,7 +4,7 @@ from pygame.locals import *
 
 pygame.init()
 
-# Screen and variables
+
 dis_size = (752, 400)
 winX = 1920
 winY = 1080
@@ -22,7 +22,7 @@ darkblue = (6, 8, 45)
 dark_blue = (43, 47, 119)
 white = (255, 255, 255)
 grey = (200, 200, 200)
-# Sound and variables
+
 enemy_dead_sound = pygame.mixer.Sound('everything/sound/dead.wav')
 jump_sound = pygame.mixer.Sound('everything/sound/jump.wav')
 bullet_sound = pygame.mixer.Sound('everything/sound/bullet_sound.wav')
@@ -37,7 +37,7 @@ jump_sound.set_volume(0.5)
 bullet_sound.set_volume(0.1)
 enemy_dead_sound.set_volume(0.5)
 
-# Sprites and pictures in general
+
 bullet = pygame.image.load('everything/map_images/maybe_bullet.png').convert_alpha()
 cannon_right = pygame.image.load('everything/cannon/cannon_right.png').convert_alpha()
 cannon_left = pygame.image.load('everything/cannon/cannon_left.png').convert_alpha()
@@ -207,7 +207,6 @@ def collision(rect, tiles):
     return hit
 
 
-# Collisions with tiles, moving player
 def move(rect, tiles, location):
     col_type = {'top': False, 'bottom': False, 'left': False, 'right': False}
     rect.x += location[0]
@@ -232,31 +231,7 @@ def move(rect, tiles, location):
 
 
 def health_bar():
-    if healthbar == 1:
-        pygame.draw.rect(display, white, (0, 387, 2, 13))
-    if 1 < healthbar <= 10:
-        pygame.draw.rect(display, white, (0, 387, 10, 13))
-    if 10 < healthbar <= 20:
-        pygame.draw.rect(display, white, (0, 387, 20, 13))
-    if 20 < healthbar <= 30:
-        pygame.draw.rect(display, white, (0, 387, 30, 13))
-    if 30 < healthbar <= 40:
-        pygame.draw.rect(display, white, (0, 387, 40, 13))
-    if 40 < healthbar <= 50:
-        pygame.draw.rect(display, white, (0, 387, 50, 13))
-    if 50 < healthbar <= 60:
-        pygame.draw.rect(display, white, (0, 387, 60, 13))
-    if 60 < healthbar <= 70:
-        pygame.draw.rect(display, white, (0, 387, 70, 13))
-
-    if 70 < healthbar <= 80:
-        pygame.draw.rect(display, white, (0, 387, 80, 13))
-
-    if 80 < healthbar <= 90:
-        pygame.draw.rect(display, white, (0, 387, 90, 13))
-
-    if 90 < healthbar <= 100:
-        pygame.draw.rect(display, white, (0, 387, 100, 13))
+    pygame.draw.rect(display, white, (0, 387, healthbar, 13))
 
 
 def game_time():
@@ -796,7 +771,6 @@ def end_screen():
         clock.tick(60)
 
 
-# Variables for main_loop
 scroll = [0, 0]
 moving = [0, 0]
 randomX = random.randint(150, 900)
